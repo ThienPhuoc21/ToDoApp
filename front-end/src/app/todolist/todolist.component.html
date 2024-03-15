@@ -1,0 +1,53 @@
+<form #taskForm="ngForm" (ngSubmit)="onSubmit(taskForm)">
+    <div class="form-group">
+        <label for="task">Task</label>
+        <input type="text" class="form-control" placeholder="Enter Task" required ngModel name="name">
+    </div>
+    <div class="form-group">
+        <label for="decription">Decription</label>
+        <input type="text" class="form-control" placeholder="Edit detail" ngModel name="decription">
+    </div>
+    <div class="form-group">
+        <label for="time">Time</label>
+        <input type="text" class="form-control" placeholder="Time" ngModel name="time">
+    </div>
+    <button type="submit" class="btn btn-warning">Add</button>
+</form>
+<div></div>
+<div>
+    <table>
+        <tr>
+            <th class="Index">Index</th>
+            <th class="Task">Task</th>
+            <th class="Detail">Detail</th>
+            <th class="Time">Time</th>
+            <th class="Status">Status</th>
+            <th class="Options">Options</th>
+        </tr>
+
+        <tr *ngFor="let t of this.listTask;index as i">
+            <td *ngIf="this.editPosition!==i" class="Index">{{i+1}}</td>
+            <td *ngIf="this.editPosition!==i" class="Task">{{t.name}}</td>
+            <td *ngIf="this.editPosition!==i" class="Detail">{{t.detail}}</td>
+            <td *ngIf="this.editPosition!==i" class="Time">{{t.time}}</td>
+            <td *ngIf="this.editPosition!==i" class="Status">{{t.isCompleted?"completed":"incompleted"}}</td>
+            <td *ngIf="this.editPosition!==i" class="Options"><button class="btn btn-info"
+                    (click)="onEdit(i)">Edit</button>
+                <button class="btn btn-danger" (click)="onDelete(t.id)">Delete</button>
+            </td>
+            <td *ngIf="this.editPosition===i" class="Index">{{i+1}}</td>
+            <td class="Task" *ngIf="this.editPosition===i"><input type="text" [(ngModel)]="this.listTask[i].name"
+                    name="this.listTask[i].name" /></td>
+            <td class="Detail" *ngIf="this.editPosition===i"><input type="text" [(ngModel)]="this.listTask[i].detail"
+                    name="this.listTask[i].detail" /></td>
+            <td class="Time" *ngIf="this.editPosition===i"><input type="text" [(ngModel)]="this.listTask[i].time"
+                    name="this.listTask[i].time" /></td>
+            <td class="Status" *ngIf="this.editPosition===i">completed <input type="checkbox"
+                    [(ngModel)]="this.listTask[i].isCompleted" name="this.listTask[i].isCompleted" ng /></td>
+            <td *ngIf="this.editPosition===i" class="Options"><button class="btn btn-success"
+                    (click)="onSave(i,t.id)">Save</button>
+                <button class="btn btn-danger" (click)="onDelete(t.id)">Delete</button>
+            </td>
+        </tr>
+    </table>
+</div>

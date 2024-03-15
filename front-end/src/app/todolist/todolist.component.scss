@@ -1,0 +1,57 @@
+form {
+    background-color: royalblue;
+    width: fit-content;
+    padding: 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    align-items: center;
+
+    .form-group {
+        margin: 10px;
+
+    }
+
+    button {
+        margin: auto;
+        width: fit-content;
+        padding: 10px;
+    }
+}
+
+table {
+    color: #fff;
+    width: 50%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 30px;
+    background-color: royalblue;
+
+    tr {
+        border-bottom: 1px solid rgba($color: #000000, $alpha: 0.2);
+
+        input {
+            width: 100%;
+            height: fit-content;
+        }
+
+        .Index,
+        .Task,
+        .Detail,
+        .Time,
+        .Status,
+        .Options {
+
+            word-wrap: break-word;
+            padding: 10PX;
+            max-width: 50px;
+            height: fit-content;
+        }
+
+        .Options {
+            word-wrap: normal;
+        }
+
+    }
+}
